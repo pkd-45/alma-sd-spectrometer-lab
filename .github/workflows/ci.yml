@@ -5,8 +5,27 @@ on:
   pull_request:
 
 jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --upgrade pip
+      - name: Install static-analysis environment
+        run: >-
+          python -m pip install
+          -e .
+          "numpy==2.0.2"
+          "ruff>=0.6"
+          "mypy>=1.10,<1.19"
+      - run: ruff check .
+      - run: mypy src/alma_lab
+
   python:
     strategy:
+      fail-fast: false
       matrix:
         python-version: ["3.9", "3.11", "3.13"]
     runs-on: ubuntu-latest
@@ -16,9 +35,13 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: python -m pip install --upgrade pip
-      - run: python -m pip install -e '.[dev]'
-      - run: ruff check .
-      - run: mypy src/alma_lab
+      - name: Install runtime and test dependencies
+        run: >-
+          python -m pip install
+          -e .
+          "pytest>=8"
+          "pytest-cov>=5"
+          "matplotlib>=3.7"
       - run: pytest --cov=alma_lab --cov-report=term-missing
       - run: python -m alma_lab demo --output products/ci-demo
       - run: python -m alma_lab spectrometer --output products/ci-spectrometer
