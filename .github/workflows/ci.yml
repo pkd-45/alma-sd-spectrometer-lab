@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  python:
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.11", "3.13"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e '.[dev]'
+      - run: ruff check .
+      - run: mypy src/alma_lab
+      - run: pytest --cov=alma_lab --cov-report=term-missing
+      - run: python -m alma_lab demo --output products/ci-demo
+      - run: python -m alma_lab spectrometer --output products/ci-spectrometer
+
+  cpp-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cmake -S cpp -B cpp/build -DCMAKE_BUILD_TYPE=Release
+      - run: cmake --build cpp/build --config Release --parallel 2
+      - run: ctest --test-dir cpp/build --output-on-failure

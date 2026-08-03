@@ -1,0 +1,12 @@
+spectrometer:
+  sample_rate_hz: 4096.0
+  fft_size: 1024
+  accumulation: 8
+  overlap_fraction: 0.0
+  window: hann
+  backend: auto
+single_dish:
+  baseline_order: 1
+  flag_sigma: 8.0
+  workers: 2
+  kernel_sigma_arcsec: 9.0

@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite this software demonstrator using the metadata below."
+title: "ALMA Single-Dish and Spectrometer Lab"
+version: 0.1.0
+date-released: 2026-08-03
+authors:
+  - family-names: Das
+    given-names: Pratyush Kumar
+license: MIT
+repository-code: "https://github.com/pkd-45/alma-sd-spectrometer-lab"
