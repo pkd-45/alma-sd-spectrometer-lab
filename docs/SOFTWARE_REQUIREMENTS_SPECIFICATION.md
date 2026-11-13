@@ -2,7 +2,7 @@
 
 ## Scope
 
-This is an independent application demonstrator, not ALMA production software. It models two bounded responsibilities from the NAOJ vacancy: synthetic total-power data processing (JD1) and a simulated FFT spectrometer/control boundary (JD2).
+This is an independent demonstrator, not ALMA production software. It models two bounded responsibilities: synthetic total-power data processing and a simulated FFT spectrometer/control boundary.
 
 ## Functional requirements
 
