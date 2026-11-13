@@ -2,13 +2,13 @@
 
 [![CI](https://github.com/pkd-45/alma-sd-spectrometer-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/pkd-45/alma-sd-spectrometer-lab/actions/workflows/ci.yml)
 
-An independent, compact software demonstrator prepared for the NAOJ **Senior Specialist, ALMA Project** vacancy. It targets **either JD1 or JD2**, with the strongest immediate fit to JD1.
+An independent software benchmark for synthetic single-dish spectral-line processing and FFT-spectrometer control, with scientific quality checks and reproducible engineering tests.
 
 > **Scope:** synthetic data and simulated devices only. This repository is not affiliated with ALMA/NAOJ, does not use proprietary ALMA code or data, and is not presented as production telescope software.
 
 ## What it demonstrates
 
-### JD1 - single-dish processing
+### Single-dish spectral-line processing
 
 - Python package and command-line interface on Linux/macOS;
 - deterministic synthetic ON/OFF total-power raster observations;
@@ -19,7 +19,7 @@ An independent, compact software demonstrator prepared for the NAOJ **Senior Spe
 - process-based parallel scan processing and a Slurm recipe;
 - scientific QA and SHA-256 product provenance.
 
-### JD2 - spectrometer software
+### FFT spectrometer and control software
 
 - simulated ADC voltages and accumulated FFT power spectra;
 - explicit OFF/READY/ARMED/ACQUIRING/FAULT state machine;
@@ -77,11 +77,10 @@ The end-to-end demo refuses to publish a product unless it recovers the injected
 - [Software requirements](docs/SOFTWARE_REQUIREMENTS_SPECIFICATION.md)
 - [Design](docs/DESIGN.md)
 - [Verification and validation](docs/VERIFICATION_AND_VALIDATION.md)
-- [Vacancy mapping](docs/APPLICATION_MAPPING.md)
-- [Public Hector evidence and safe wording](docs/HECTOR_PUBLIC_EVIDENCE.md)
+- [Technical capabilities](docs/TECHNICAL_CAPABILITIES.md)
+- [Public Hector contribution evidence](docs/HECTOR_PUBLIC_EVIDENCE.md)
 
-## Official context
+## Relevant public research software
 
-- NAOJ vacancy: Senior Specialists, ALMA Project, JD1/JD2.
-- ALMA Science Portal: CASA and the ALMA pipeline are used for calibration and imaging of interferometric and single-dish data.
-- CASAdocs: public single-dish tasks include calibration, spectral baseline fitting and total-power imaging.
+- ALMA Science Portal: CASA and the ALMA pipeline provide public context for calibration and imaging of interferometric and single-dish data.
+- CASAdocs: public single-dish processing includes calibration, spectral baseline fitting and total-power imaging.
